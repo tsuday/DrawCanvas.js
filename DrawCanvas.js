@@ -1,4 +1,10 @@
-
+/**
+ * Canvas users can do painting.<br>
+ * Drawn image can be obtained as Base64 string.
+ *
+ * @constructor
+ * @param canvasEle {object} canvas element to draw
+ */
 var DrawCanvas = function(canvasEle) {
 	this._canvasEle = canvasEle;
 
@@ -64,12 +70,26 @@ var DrawCanvas = function(canvasEle) {
 	this._canvasEle.addEventListener('mouseout', drawEnd, false);
 };
 
+/**
+ * Clear what is drawn on canvas.
+ *
+ * @memberOf DrawCanvas
+ */
 DrawCanvas.prototype.clear = function () {
 	this._drawContext.beginPath();
 	this._drawContext.fillStyle = "#ffffff";
 	this._drawContext.fillRect(0, 0, 512, 512);
 };
 
+
+/**
+ * Return Base64 string of what is drawn on canvas.
+ *
+ * @param [type] {string} Type of base64 encode.
+ *     Default value is "image/png".
+ * @return {string} Base64 string
+ * @memberOf DrawCanvas
+ */
 DrawCanvas.prototype.toDataURL = function(type) {
 	type = type ? type : "image/png";
 
