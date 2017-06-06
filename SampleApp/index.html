@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Sample Application for DrawCanvas.js</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background-color: #fff;
+				margin: 16px;
+				overflow: hidden;
+			}
+		</style>
+		<script src="js/DrawCanvas.js"></script>
+		<script>
+
+			window.onload = function () {
+
+				var drawCanvasEle = document.getElementById("drawCanvas");
+				var drawCanvas = new DrawCanvas(drawCanvasEle);
+				
+				var clearDrawingBtn = document.getElementById("clearDrawingBtn");
+				clearDrawingBtn.onclick = function() {
+					drawCanvas.clear();
+				};
+
+			};
+		</script>
+	</head>
+
+	<body>
+		<h1>Sample Application for DrawCanvas.js</h1>
+
+		<canvas id="drawCanvas" width="512" height="512" style="width:512px;height:512px;border:solid 2px #000000"></canvas>
+		<button id="clearDrawingBtn">Clear</button>
+
+	</body>
+</html
