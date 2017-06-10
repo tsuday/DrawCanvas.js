@@ -81,6 +81,22 @@ DrawCanvas.prototype.setPenSize = function (size) {
 };
 
 /**
+ * Set pen color.
+ *
+ * @param r {number} Red color to set.
+ *     The value should be an integer from 0 to 255.
+ * @param g {number} Green color to set.
+ *     The value should be an integer from 0 to 255.
+ * @param b {number} Blue color to set.
+ *     The value should be an integer from 0 to 255.
+ * @memberOf DrawCanvas
+ */
+DrawCanvas.prototype.setPenColor = function (r, g, b) {
+	this._drawContext.strokeStyle = 'rgb(' + r + ', ' + g + ', ' +  b + ')';
+	this._drawContext.fillStyle =  'rgb(' + r + ', ' + g + ', ' +  b + ')';
+};
+
+/**
  * Clear what is drawn on canvas.
  *
  * @memberOf DrawCanvas
