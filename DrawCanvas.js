@@ -71,6 +71,16 @@ var DrawCanvas = function(canvasEle) {
 };
 
 /**
+ * Set pen size.
+ *
+ * @param size {number} Pen size to set.
+ * @memberOf DrawCanvas
+ */
+DrawCanvas.prototype.setPenSize = function (size) {
+	this._drawContext.lineWidth = size;
+};
+
+/**
  * Clear what is drawn on canvas.
  *
  * @memberOf DrawCanvas
@@ -80,7 +90,6 @@ DrawCanvas.prototype.clear = function () {
 	this._drawContext.fillStyle = "#ffffff";
 	this._drawContext.fillRect(0, 0, 512, 512);
 };
-
 
 /**
  * Return Base64 string of what is drawn on canvas.
@@ -95,3 +104,5 @@ DrawCanvas.prototype.toDataURL = function(type) {
 
 	return this._canvasEle.toDataURL(type);
 };
+
+
