@@ -19,6 +19,14 @@
 				var drawCanvasEle = document.getElementById("drawCanvas");
 				var drawCanvas = new DrawCanvas(drawCanvasEle);
 				
+				// Sample to show how to change pen size
+				var sliderPenSize = document.getElementById("penSize");
+				sliderPenSize.addEventListener("input", function() {
+					drawCanvas.setPenSize(sliderPenSize.value);
+				}, false);
+
+
+
 				// Sample to show how to clear canvas
 				var clearDrawingBtn = document.getElementById("clearDrawingBtn");
 				clearDrawingBtn.onclick = function() {
@@ -48,6 +56,7 @@
 		<canvas id="drawCanvas" width="512" height="512" style="width:512px;height:512px;border:solid 2px #000000"></canvas>
 		
 		<br>
+		Pen Size : <input name="penSize" id="penSize" type="range" min="1" max="16"><br>
 		
 		<button id="downloadBtn">Download As Image</button>
 		<a id="downloadLink" href="" download="DrawCanvas.jpg" style="display:none" ></a>
