@@ -19,9 +19,23 @@
 				var drawCanvasEle = document.getElementById("drawCanvas");
 				var drawCanvas = new DrawCanvas(drawCanvasEle);
 				
+				// Sample to show how to clear canvas
 				var clearDrawingBtn = document.getElementById("clearDrawingBtn");
 				clearDrawingBtn.onclick = function() {
 					drawCanvas.clear();
+				};
+
+				// Sample to show how to donwload drawn image
+				var downloadBtn = document.getElementById("downloadBtn");
+				var downloadLink = document.getElementById("downloadLink");
+				downloadBtn.onclick = function() {
+					//var data = drawCanvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+					var data = drawCanvas.toDataURL();
+					downloadLink.setAttribute("href", data);
+					downloadLink.click();
+					
+					//window.location.href = url;
+					//downloadBtn.href = drawCanvas.toDataURL();
 				};
 
 			};
@@ -29,10 +43,16 @@
 	</head>
 
 	<body>
-		<h1>Sample Application for DrawCanvas.js</h1>
+		<h1>DrawCanvas.js Sample</h1>
 
 		<canvas id="drawCanvas" width="512" height="512" style="width:512px;height:512px;border:solid 2px #000000"></canvas>
-		<button id="clearDrawingBtn">Clear</button>
+		
+		<br>
+		
+		<button id="downloadBtn">Download As Image</button>
+		<a id="downloadLink" href="" download="DrawCanvas.jpg" style="display:none" ></a>
+		&nbsp;
+		<button id="clearDrawingBtn">Clear Canvas</button>
 
 	</body>
 </html
