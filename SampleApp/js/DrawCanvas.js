@@ -104,7 +104,7 @@ DrawCanvas.prototype.setPenColor = function (r, g, b) {
 DrawCanvas.prototype.clear = function () {
 	this._drawContext.beginPath();
 	this._drawContext.fillStyle = "#ffffff";
-	this._drawContext.fillRect(0, 0, 512, 512);
+	this._drawContext.fillRect(0, 0, this._canvasEle.width, this._canvasEle.height);
 };
 
 /**
