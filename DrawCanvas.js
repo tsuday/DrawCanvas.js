@@ -34,17 +34,7 @@ var DrawCanvas = function(canvasEle) {
 	this._canvasEle.addEventListener('mousemove', onMove, false);
 
 	// On left click by mouse
-	var onClick = function(e) {
-		if (e.button != 0) {
-			return;
-		}
-		
-		var rect = e.target.getBoundingClientRect();
-		var X = ~~(e.clientX - rect.left);
-		var Y = ~~(e.clientY - rect.top);
-		draw(X, Y);
-	};
-	function draw(X, Y) {
+	var draw = function(X, Y) {
 		drawContext.beginPath();
 		if (!mouseX) {
 			// start drawing from current mouse cursor position
@@ -59,6 +49,16 @@ var DrawCanvas = function(canvasEle) {
 		// for next call
 		mouseX = X;
 		mouseY = Y;
+	};
+	var onClick = function(e) {
+		if (e.button != 0) {
+			return;
+		}
+		
+		var rect = e.target.getBoundingClientRect();
+		var X = ~~(e.clientX - rect.left);
+		var Y = ~~(e.clientY - rect.top);
+		draw(X, Y);
 	};
 	this._canvasEle.addEventListener('mousedown', onClick, false);
 
