@@ -25,6 +25,19 @@
 					drawCanvas.setPenSize(sliderPenSize.value);
 				}, false);
 
+				// Sample to show how to change pen color
+				var sliderPenR = document.getElementById("penR");
+				var sliderPenG = document.getElementById("penG");
+				var sliderPenB = document.getElementById("penB");
+				var onPenColorSliderChanged = function() {
+					var r = sliderPenR.value;
+					var g = sliderPenG.value;
+					var b = sliderPenB.value;
+					drawCanvas.setPenColor(r, g, b);
+				};
+				sliderPenR.addEventListener("input", onPenColorSliderChanged, false);
+				sliderPenG.addEventListener("input", onPenColorSliderChanged, false);
+				sliderPenB.addEventListener("input", onPenColorSliderChanged, false);
 
 
 				// Sample to show how to clear canvas
@@ -57,6 +70,10 @@
 		
 		<br>
 		Pen Size : <input name="penSize" id="penSize" type="range" min="1" max="16"><br>
+		<br>
+		R : <input name="penR" id="penR" type="range" min="0" max="255" value="0"><br>
+		G : <input name="penG" id="penG" type="range" min="0" max="255" value="0"><br>
+		B : <input name="penB" id="penB" type="range" min="0" max="255" value="0"><br>
 		
 		<button id="downloadBtn">Download As Image</button>
 		<a id="downloadLink" href="" download="DrawCanvas.jpg" style="display:none" ></a>
