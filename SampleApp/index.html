@@ -7,13 +7,13 @@
 		<style>
 			body {
 				background-color: #fff;
-				margin: 16px;
+				margin-top: 16px;
+				margin-left: 32px;
 				overflow: hidden;
 			}
 		</style>
 		<script src="js/DrawCanvas.js"></script>
 		<script>
-
 			window.onload = function () {
 
 				var drawCanvasEle = document.getElementById("drawCanvas");
@@ -23,6 +23,10 @@
 				var sliderPenSize = document.getElementById("penSize");
 				sliderPenSize.addEventListener("input", function() {
 					drawCanvas.setPenSize(sliderPenSize.value);
+					
+					// update label
+					var labelForPenSize = document.getElementById("labelForPenSize");
+					labelForPenSize.innerHTML = sliderPenSize.value;
 				}, false);
 
 				// Sample to show how to change pen color
@@ -34,6 +38,15 @@
 					var g = sliderPenG.value;
 					var b = sliderPenB.value;
 					drawCanvas.setPenColor(r, g, b);
+
+					// update labels
+					var labelForPenR = document.getElementById("labelForPenR");
+					var labelForPenG = document.getElementById("labelForPenG");
+					var labelForPenB = document.getElementById("labelForPenB");
+					labelForPenR.innerHTML = sliderPenR.value;
+					labelForPenG.innerHTML = sliderPenG.value;
+					labelForPenB.innerHTML = sliderPenB.value;
+
 				};
 				sliderPenR.addEventListener("input", onPenColorSliderChanged, false);
 				sliderPenG.addEventListener("input", onPenColorSliderChanged, false);
@@ -50,13 +63,9 @@
 				var downloadBtn = document.getElementById("downloadBtn");
 				var downloadLink = document.getElementById("downloadLink");
 				downloadBtn.onclick = function() {
-					//var data = drawCanvas.toDataURL().replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 					var data = drawCanvas.toDataURL();
 					downloadLink.setAttribute("href", data);
 					downloadLink.click();
-					
-					//window.location.href = url;
-					//downloadBtn.href = drawCanvas.toDataURL();
 				};
 
 			};
@@ -65,16 +74,19 @@
 
 	<body>
 		<h1>DrawCanvas.js Sample</h1>
-
+		This is a sample html for <span style="font-style:italic"><a href="https://github.com/tsuday/DrawCanvas.js">DrawCanvas.js</a></span>.<br>
+		You can draw images by mouse dragging on canvas.
+		<br>
 		<canvas id="drawCanvas" width="512" height="512" style="width:512px;height:512px;border:solid 2px #000000"></canvas>
-		
 		<br>
-		Pen Size : <input name="penSize" id="penSize" type="range" min="1" max="16"><br>
+		<span style="font-style:italic">DrawCanvas.js</span> has some config APIs for drawing. To see how to call them, please show script on this html with web browser's developer tool.<br>
+		Pen Size : <input name="penSize" id="penSize" type="range" min="1" max="16" value="1">&nbsp;&nbsp;&nbsp;<label for="penSize" id="labelForPenSize">1</label><br>
+		R : <input name="penR" id="penR" type="range" min="0" max="255" value="0">&nbsp;&nbsp;&nbsp;<label for="penR" id="labelForPenR">0</label><br>
+		G : <input name="penG" id="penG" type="range" min="0" max="255" value="0">&nbsp;&nbsp;&nbsp;<label for="penG" id="labelForPenG">0</label><br>
+		B : <input name="penB" id="penB" type="range" min="0" max="255" value="0">&nbsp;&nbsp;&nbsp;<label for="penB" id="labelForPenB">0</label><br>
 		<br>
-		R : <input name="penR" id="penR" type="range" min="0" max="255" value="0"><br>
-		G : <input name="penG" id="penG" type="range" min="0" max="255" value="0"><br>
-		B : <input name="penB" id="penB" type="range" min="0" max="255" value="0"><br>
-		
+		Drawn image can be converted to Base64 data string format, or cleared. Base64 data can be used to download as image.
+		<br>
 		<button id="downloadBtn">Download As Image</button>
 		<a id="downloadLink" href="" download="DrawCanvas.jpg" style="display:none" ></a>
 		&nbsp;
