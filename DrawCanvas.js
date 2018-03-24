@@ -20,7 +20,7 @@ var DrawCanvas = function(canvasEle, undoStackSize) {
 	this._undoStackSize = undoStackSize;
 	this._undoStack = [];
 	// index for undo stack used for next undo call
-	this._undoPointer = -1;
+	this._undoPointer = 0;
 
 	var drawContext = canvasEle.getContext("2d");
 	this._drawContext = drawContext;
@@ -99,8 +99,6 @@ var DrawCanvas = function(canvasEle, undoStackSize) {
 		}
 
 		this._isMouseDown = false;
-
-		console.log("end")
 	};
 	this._canvasEle.addEventListener('mouseup', drawEnd, false);
 	this._canvasEle.addEventListener('mouseout', drawEnd, false);
@@ -132,18 +130,30 @@ DrawCanvas.prototype.setPenColor = function (r, g, b) {
 	this._drawContext.fillStyle =  'rgb(' + r + ', ' + g + ', ' +  b + ')';
 };
 
-
 /**
  * Undo the stroke by user.
  *
  * @memberOf DrawCanvas
  */
 DrawCanvas.prototype.undo = function () {
-	if (this._undoPointer < 0) {
+	if (this._undoPointer < 1) {
 		return;
 	}
-	this._drawContext.putImageData(this._undoStack[this._undoPointer], 0, 0);
-	this._undoPointer--;
+	this._drawContext.putImageData(this._undoStack[this._undoPointer - 1], 0, 0);
+	if (this._undoPointer >= 1) this._undoPointer--;
+};
+
+/**
+ * Redo the stroke by user.
+ *
+ * @memberOf DrawCanvas
+ */
+DrawCanvas.prototype.redo = function () {
+	if (this._undoPointer+1 >= this._undoStack.length) {
+		return;
+	}
+	this._drawContext.putImageData(this._undoStack[this._undoPointer + 1], 0, 0);
+	if (this._undoPointer < this._undoStack.length) this._undoPointer++;
 };
 
 /**
