@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="DrawCanvas"><span class="type-signature"></span>new DrawCanvas<span class="signature">(canvasEle)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="DrawCanvas"><span class="type-signature"></span>new DrawCanvas<span class="signature">(canvasEle, undoStackSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -71,6 +71,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -96,10 +98,51 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last">canvas element to draw</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>undoStackSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Size of stack used for undo function.    Negative value indicates that stack size is theoretically inifinite,    and default value is -1. When stack size exceeds this value,    oldest data in the stack is abandoned. Note that each elements in stack    holds copied whole canvas data, so be careful about data size on memory.</td>
         </tr>
 
     
@@ -140,7 +183,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line8">line 8</a>
+        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -240,7 +283,89 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line104">line 104</a>
+        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line164">line 164</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="redo"><span class="type-signature"></span>redo<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Redo the stroke by user.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line151">line 151</a>
     </li></ul></dd>
     
 
@@ -417,7 +542,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line94">line 94</a>
+        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line128">line 128</a>
     </li></ul></dd>
     
 
@@ -548,7 +673,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line79">line 79</a>
+        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line113">line 113</a>
     </li></ul></dd>
     
 
@@ -691,7 +816,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line118">line 118</a>
+        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line178">line 178</a>
     </li></ul></dd>
     
 
@@ -740,6 +865,88 @@
 
 
         
+            
+
+    
+
+    <h4 class="name" id="undo"><span class="type-signature"></span>undo<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Undo the stroke by user.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="DrawCanvas.js.html">DrawCanvas.js</a>, <a href="DrawCanvas.js.html#line138">line 138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
@@ -761,7 +968,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jun 12 2017 00:07:10 GMT+0900 (東京 (標準時))
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Mar 25 2018 15:22:32 GMT+0900 (東京 (標準時))
 </footer>
 
 <script> prettyPrint(); </script>
